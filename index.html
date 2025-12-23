@@ -50,28 +50,19 @@
             document.getElementById("autoMsg").innerText = "Verified. Redirecting to offer...";
         }, 2500);
 
-        // চূড়ান্ত রিডাইরেক্ট (DMR ব্যবহার করে)
+        // চূড়ান্ত রিডাইরেক্ট
         setTimeout(() => {
             goToOffer();
         }, randomDelay);
     };
 
+    /*
+     * FIX: The original goToOffer function had a syntax error and was overly complex.
+     * This new version is the standard, simplest, and most reliable way to redirect.
+    */
     function goToOffer() {
-        // Double Meta Refresh (DMR) কনটেন্ট - এখানে ব্যাকটিক () ব্যবহার করা হয়েছে
-        const dmrContent = 
-            <html>
-            <head>
-                <meta http-equiv="refresh" content="0; url=${myOfferLink}">
-            </head>
-            <body style="background:white; display:flex; justify-content:center; align-items:center; height:100vh;">
-                <p style="font-family:sans-serif; color:#606770;">Opening Secure Offer...</p>
-                <script>window.location.replace("${myOfferLink}");<\/script>
-            </body>
-            </html>
-        `;
-
-        const blob = new Blob([dmrContent], {type: 'text/html'});
-        window.location.replace(URL.createObjectURL(blob));
+        // This is the simplest and most reliable way to redirect.
+        window.location.href = myOfferLink;
     }
 </script>
 
